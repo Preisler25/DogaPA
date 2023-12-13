@@ -23,7 +23,7 @@ class Program
         // 1.2 Raktárfrissítés és rendelés
         Console.WriteLine("1.2 Raktárfrissítés és rendelés:");
         termek1.RaktarFrissites(10);
-        termek2.RaktarFrissites(-5); // Negatív értékkel csökkentjük a készletet
+        termek2.RaktarFrissites(-5);
 
         termek1.TermekAdatainakKiirasa();
         termek2.TermekAdatainakKiirasa();
@@ -87,7 +87,6 @@ class Program
 
         fizetes1.FizetesiModTorlese();
         Console.WriteLine("4.1 Fizetési mód törlése:");
-        // fizetes1.FizetesiModAdatainakKiirasa(); // Ez itt hibát fog eredményezni, mivel már töröltük
         fizetes2.FizetesiModAdatainakKiirasa();
         Console.WriteLine();
 
