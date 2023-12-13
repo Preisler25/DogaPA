@@ -5,10 +5,11 @@ namespace DogaPA
 	{
 		public List<Termek> termekek { get; set; }
 		public Kosar(){
-
+			termekek = new List<Termek>();
 		}
 
 		public void TermekHozzaadasa(Termek termek){
+			termek.TermekAraKiiras();
 			termekek.Add(termek);
 		}
 
@@ -36,23 +37,27 @@ namespace DogaPA
 			Console.WriteLine(osszeg);
 		}
 
-		public void TermekMennyisegKiiras(Termek termek){
-			Console.WriteLine(termek.Raktaron);
-		}
+		public void TermekMennyisegKiiras(Termek termek)
+    	{
+        	int mennyiseg = termekek.Count(t => t == termek);
+        	Console.WriteLine($"A kosárban lévő {termek.Nev} mennyisége: {mennyiseg}");
+    	}
 
-		public void TermekMennyisegNovel(Termek termek, int mennyiseg){
-			for (int i = 0; i < mennyiseg; i++)
-			{
-				termekek.add(termek);
-			}
-		}
+    	public void TermekMennyisegNovel(Termek termek, int mennyiseg)
+    	{
+        	for (int i = 0; i < mennyiseg; i++)
+        	{
+            	termekek.Add(termek);
+        	}
+    	}
 
-		public void TermekMennyisegCsokken(Termek termek, int mennyiseg){
-			for (int i = 0; i < mennyiseg; i++)
-			{
-				termekek.remove(termek);
-			}
-		}
+    	public void TermekMennyisegCsokken(Termek termek, int mennyiseg)
+    	{
+        	for (int i = 0; i < mennyiseg; i++)
+        	{
+            	termekek.Remove(termek);
+        	}
+    	}
 	}
 }
 

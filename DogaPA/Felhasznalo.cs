@@ -7,6 +7,7 @@ namespace DogaPA
     	public string Nev { get; set; }
     	public string Email { get; set; }
     	public Kosar Kosar { get; set; }
+		public List<Rendeles> Rendeleseim { get; set; }
 
     	public Felhasznalo(int id, string nev, string email)
     	{
@@ -14,20 +15,40 @@ namespace DogaPA
         	Nev = nev;
         	Email = email;
         	Kosar = new Kosar();
+			Rendeleseim = new List<Rendeles>();
 		}
 
-		/*
-KosarTartalma(): Kiírja a felhasználó kosarában lévő termékek neveit.
-RendeleseimListazasa(): Kiírja a felhasználó rendeléseit.
-EmailKuldes(string uzenet): Küld egy e-mailt a felhasználó e-mail címére egy adott üzenettel.
-ProfilAdatainakKiirasa(): Kiírja a felhasználó profiladatait.
-RendelesekOsszegezes(): Összegzi és kiírja a felhasználó összes rendelésének értékét.
-RendelesHozzaadasa(Rendeles rendeles): Hozzáad egy új rendelést a felhasználóhoz.*/
-		public void KosarTartalma(){
+		public void KosarTartalma() {
 			Kosar.KosarTartalma();
 		}
 
-		public 
+		public void RendeleseimListazasa(){
+			foreach (var rendeles in Rendeleseim)
+			{
+				rendeles.RendelésAdatainakKiirasa();
+			}
+		}
+
+		public void EmailKuldes(string uzenet){
+			Console.WriteLine($"E-mail küldve a felhasználónak: {Email}, üzenet: {uzenet}");
+		}
+
+		public void ProfilAdatainakKiirasa(){
+			Console.WriteLine($"Felhasználó ID: {ID}, Felhasználó neve: {Nev}, Felhasználó e-mail címe: {Email}");
+		}
+
+		public void RendelesekOsszegezes(){
+			int osszeg = 0;
+			foreach (var rendeles in Rendeleseim)
+			{
+				osszeg += rendeles.RendelesOsszegzes();
+			}
+			Console.WriteLine($"A felhasználó összes rendelésének értéke: {osszeg}");
+		}
+
+		public void RendelesHozzaadasa(Rendeles rendeles){
+			Rendeleseim.Add(rendeles);
+		}
 	}
 }
 
